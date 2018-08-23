@@ -192,6 +192,58 @@ public:
   {
     return this->pixelV;
   }
+  /*Procedimiento  que reserva memoria para el arreglo que tendra los planos
+  RGB de la imagen.
+  Entrada: void
+  Salida: void*/
+  void setMemory()
+  {
+    this->pixelR = (unsigned char **)malloc(this->alto * sizeof(char *));
+    this->pixelG = (unsigned char **)malloc(this->alto * sizeof(char *));
+    this->pixelB = (unsigned char **)malloc(this->alto * sizeof(char *));
+    if (this->profundidadColor == 32)
+      this->pixelV = (unsigned char **)malloc(this->alto * sizeof(char *));
+    for (int i = 0; i < this->alto; i++)
+    {
+      this->pixelR[i] = (unsigned char *)malloc(this->ancho * sizeof(char));
+      this->pixelG[i] = (unsigned char *)malloc(this->ancho * sizeof(char));
+      this->pixelB[i] = (unsigned char *)malloc(this->ancho * sizeof(char));
+      if (this->profundidadColor == 32)
+        this->pixelV[i] = (unsigned char *)malloc(this->alto * sizeof(char));
+    }
+  }
+  void setPixelRE(int i, int j, unsigned char R)
+  {
+    this->pixelR[i][j]=R;
+  }
+  unsigned char getPixelRE(int i, int j)
+  {
+    return this->pixelR[i][j];
+  }
+  void setPixelGE(int i, int j, unsigned char G)
+  {
+    this->pixelG[i][j]=G;
+  }
+  unsigned char getPixelGE(int i, int j)
+  {
+    return this->pixelG[i][j];
+  }
+  void setPixelBE(int i, int j, unsigned char B)
+  {
+    this->pixelB[i][j]=B;
+  }
+  unsigned char getPixelBE(int i, int j)
+  {
+    return this->pixelB[i][j];
+  }
+  void setPixelVE(int i, int j, unsigned char V)
+  {
+    this->pixelV[i][j]=V;
+  }
+  unsigned char getPixelVE(int i, int j)
+  {
+    return this->pixelV[i][j];
+  }
   void display()
   {
     cout<<"BM= "<<this->bm[0]<<this->bm[1]<<endl;

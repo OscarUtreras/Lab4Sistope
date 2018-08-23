@@ -1,10 +1,12 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 #ifndef BMP_CPP
 #define BMP_CPP
 class BMP
 {
-  char bm[2];                 //(2 Bytes) BM (Tipo de archivo)
+  //char bm[2];
+  vector<char> bm;            //(2 Bytes) BM (Tipo de archivo)
   int tamano;                 //(4 Bytes) Tamaño del archivo en bytes
   int reservado;              //(4 Bytes) Reservado
   int offset;                 //(4 Bytes) offset, distancia en bytes entre la img y los píxeles
@@ -25,7 +27,19 @@ class BMP
   unsigned char **pixelB;     //Puntero a los pixeles del plano B (Azul)
   unsigned char **pixelV;     //Puntero a los pixeles del plano V
 public:
-  BMP(){}
+  BMP()
+  {
+    this->bm.resize(2);
+  }
+
+  void setBm(vector<char> bm)
+  {
+    this->bm = bm;
+  }
+  vector<char> getBm()
+  {
+    return this->bm;
+  }
   void setTamano(int tamano)
   {
     this->tamano = tamano;
@@ -34,9 +48,153 @@ public:
   {
     return this->tamano;
   }
+  void setReservado(int reservado)
+  {
+    this->reservado = reservado;
+  }
+  int getReservado()
+  {
+    return this->reservado;
+  }
+  void setOffset(int offset)
+  {
+    this->offset = offset;
+  }
+  int getOffset()
+  {
+    return this->offset;
+  }
+  void setTamanoMetadatos(int tamanoMetadatos)
+  {
+    this->tamanoMetadatos = tamanoMetadatos;
+  }
+  int getTamanoMetadatos()
+  {
+    return this->tamanoMetadatos;
+  }
+  void setAlto(int alto)
+  {
+    this->alto = alto;
+  }
+  int getAlto()
+  {
+    return this->alto;
+  }
+  void setAncho(int ancho)
+  {
+    this->ancho = ancho;
+  }
+  int getAncho()
+  {
+    return this->ancho;
+  }
+  void setNumeroPlanos(short int numeroPlanos)
+  {
+    this->numeroPlanos = numeroPlanos;
+  }
+  short int getNumeroPlanos()
+  {
+    return this->numeroPlanos;
+  }
+  void setProfundidadColor(short int profundidadColor)
+  {
+    this->profundidadColor = profundidadColor;
+  }
+  short int getProfundidadColor()
+  {
+    return this->profundidadColor;
+  }
+  void setTipoCompresion(int tipoCompresion)
+  {
+    this->tipoCompresion = tipoCompresion;
+  }
+  int getTipoCompresion()
+  {
+    return this->tipoCompresion;
+  }
+  void setTamanoEstructura(int tamanoEstructura)
+  {
+    this->tamanoEstructura = tamanoEstructura;
+  }
+  int getTamanoEstructura()
+  {
+    return this->tamanoEstructura;
+  }
+  void setPxmh(int pxmh)
+  {
+    this->pxmh = pxmh;
+  }
+  int getPxmh()
+  {
+    return this->pxmh;
+  }
+  void setPxmv(int pxmv)
+  {
+    this->pxmv = pxmv;
+  }
+  int getPxmv()
+  {
+    return this->pxmv;
+  }
+  void setColoresUsados(int coloresUsados)
+  {
+    this->coloresUsados = coloresUsados;
+  }
+  int getColoresUsados()
+  {
+    return this->coloresUsados;
+  }
+  void setColoresImportantes(int coloresImportantes)
+  {
+    this->coloresImportantes = coloresImportantes;
+  }
+  int getColoresImportantes()
+  {
+    return this->coloresImportantes;
+  }
+  void setPixelesNegros(int pixelesNegros)
+  {
+    this->pixelesNegros = pixelesNegros;
+  }
+  int getPixelesNegros()
+  {
+    return this->pixelesNegros;
+  }
+  void setPixelR(unsigned char ** pixelR)
+  {
+    this->pixelR = pixelR;
+  }
+  unsigned char ** getPixelR()
+  {
+    return this->pixelR;
+  }
+  void setPixelG(unsigned char ** pixelG)
+  {
+    this->pixelG = pixelG;
+  }
+  unsigned char ** getPixelG()
+  {
+    return this->pixelG;
+  }
+  void setPixelB(unsigned char ** pixelB)
+  {
+    this->pixelB = pixelB;
+  }
+  unsigned char ** getPixelB()
+  {
+    return this->pixelB;
+  }
+  void setPixelV(unsigned char ** pixelV)
+  {
+    this->pixelV = pixelV;
+  }
+  unsigned char ** getPixelV()
+  {
+    return this->pixelV;
+  }
   void display()
   {
-    cout<<"BM= "<<this->bm<<endl;
+    cout<<"BM= "<<this->bm[0]<<this->bm[1]<<endl;
     cout<<"Tamano= "<<this->tamano<<endl;
     cout<<"Reservado= "<<this->reservado<<endl;
     cout<<"Offset= "<<this->offset<<endl;

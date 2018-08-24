@@ -160,35 +160,35 @@ public:
   {
     return this->pixelesNegros;
   }
-  void setPixelR(unsigned char ** pixelR)
+  void setPixelR(unsigned char **pixelR)
   {
     this->pixelR = pixelR;
   }
-  unsigned char ** getPixelR()
+  unsigned char **getPixelR()
   {
     return this->pixelR;
   }
-  void setPixelG(unsigned char ** pixelG)
+  void setPixelG(unsigned char **pixelG)
   {
     this->pixelG = pixelG;
   }
-  unsigned char ** getPixelG()
+  unsigned char **getPixelG()
   {
     return this->pixelG;
   }
-  void setPixelB(unsigned char ** pixelB)
+  void setPixelB(unsigned char **pixelB)
   {
     this->pixelB = pixelB;
   }
-  unsigned char ** getPixelB()
+  unsigned char **getPixelB()
   {
     return this->pixelB;
   }
-  void setPixelV(unsigned char ** pixelV)
+  void setPixelV(unsigned char **pixelV)
   {
     this->pixelV = pixelV;
   }
-  unsigned char ** getPixelV()
+  unsigned char **getPixelV()
   {
     return this->pixelV;
   }
@@ -214,7 +214,7 @@ public:
   }
   void setPixelRE(int i, int j, unsigned char R)
   {
-    this->pixelR[i][j]=R;
+    this->pixelR[i][j] = R;
   }
   unsigned char getPixelRE(int i, int j)
   {
@@ -222,7 +222,7 @@ public:
   }
   void setPixelGE(int i, int j, unsigned char G)
   {
-    this->pixelG[i][j]=G;
+    this->pixelG[i][j] = G;
   }
   unsigned char getPixelGE(int i, int j)
   {
@@ -230,7 +230,7 @@ public:
   }
   void setPixelBE(int i, int j, unsigned char B)
   {
-    this->pixelB[i][j]=B;
+    this->pixelB[i][j] = B;
   }
   unsigned char getPixelBE(int i, int j)
   {
@@ -238,7 +238,7 @@ public:
   }
   void setPixelVE(int i, int j, unsigned char V)
   {
-    this->pixelV[i][j]=V;
+    this->pixelV[i][j] = V;
   }
   unsigned char getPixelVE(int i, int j)
   {
@@ -246,21 +246,21 @@ public:
   }
   void display()
   {
-    cout<<"BM= "<<this->bm[0]<<this->bm[1]<<endl;
-    cout<<"Tamano= "<<this->tamano<<endl;
-    cout<<"Reservado= "<<this->reservado<<endl;
-    cout<<"Offset= "<<this->offset<<endl;
-    cout<<"TamanoMetadatos= "<<this->tamanoMetadatos<<endl;
-    cout<<"Alto= "<<this->alto<<endl;
-    cout<<"Ancho= "<<this->ancho<<endl;
-    cout<<"NumeroPlanos= "<<this->numeroPlanos<<endl;
-    cout<<"ProfundidadColor= "<<this->profundidadColor<<endl;
-    cout<<"TipoCompresion= "<<this->tipoCompresion<<endl;
-    cout<<"TamanoEstructura= "<<this->tamanoEstructura<<endl;
-    cout<<"Pxmh= "<<this->pxmh<<endl;
-    cout<<"Pxmv= "<<this->pxmv<<endl;
-    cout<<"ColoresUsados= "<<this->coloresUsados<<endl;
-    cout<<"ColoresImportantes= "<<this->coloresImportantes<<endl;
+    cout << "BM= " << this->bm[0] << this->bm[1] << endl;
+    cout << "Tamano= " << this->tamano << endl;
+    cout << "Reservado= " << this->reservado << endl;
+    cout << "Offset= " << this->offset << endl;
+    cout << "TamanoMetadatos= " << this->tamanoMetadatos << endl;
+    cout << "Alto= " << this->alto << endl;
+    cout << "Ancho= " << this->ancho << endl;
+    cout << "NumeroPlanos= " << this->numeroPlanos << endl;
+    cout << "ProfundidadColor= " << this->profundidadColor << endl;
+    cout << "TipoCompresion= " << this->tipoCompresion << endl;
+    cout << "TamanoEstructura= " << this->tamanoEstructura << endl;
+    cout << "Pxmh= " << this->pxmh << endl;
+    cout << "Pxmv= " << this->pxmv << endl;
+    cout << "ColoresUsados= " << this->coloresUsados << endl;
+    cout << "ColoresImportantes= " << this->coloresImportantes << endl;
   }
 };
 #endif

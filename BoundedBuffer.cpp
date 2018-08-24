@@ -1,7 +1,5 @@
 #include <uC++.h>
 #include <iostream>
-#include <stdlib.h> /* srand, rand */
-#include <time.h>
 #include <queue>
 #include "BMP.cpp"
 using namespace std;

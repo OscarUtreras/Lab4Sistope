@@ -12,9 +12,7 @@ _Monitor BoundedBuffer
 	queue<BMP> elements;
 
   public:
-	BoundedBuffer(int buf_size) : front(0), back(0), count(0), buf_size(buf_size)
-	{
-	}
+	BoundedBuffer(int buf_size) : front(0), back(0), count(0), buf_size(buf_size) {}
 	_Nomutex int query() { return count; }
 	void insert(BMP elem)
 	{

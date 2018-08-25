@@ -6,6 +6,7 @@ using namespace std;
 class BMP
 {
   //char bm[2];
+  int id;                     // para identificar la imagen
   vector<char> bm;            //(2 Bytes) BM (Tipo de archivo)
   int tamano;                 //(4 Bytes) Tamaño del archivo en bytes
   int reservado;              //(4 Bytes) Reservado
@@ -31,7 +32,14 @@ public:
   {
     this->bm.resize(2);
   }
-
+  void setId(int id)
+  {
+    this->id = id;
+  }
+  int getId()
+  {
+    return this->id;
+  }
   void setBm(vector<char> bm)
   {
     this->bm = bm;

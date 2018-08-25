@@ -6,10 +6,11 @@ using namespace std;
 #define GRAYSCALE_CPP
 _Task GrayScale
 {
-    BoundedBuffer &Buffer;
+    BoundedBuffer &BufferRI;
+    BoundedBuffer &BufferGS;
 
   public:
-    GrayScale(BoundedBuffer & buf) : Buffer(buf) {}
+    GrayScale(BoundedBuffer & bufRI, BoundedBuffer & bufGS) : BufferRI(bufRI), BufferGS(bufGS) {}
 
   private:
     void main()
@@ -17,14 +18,17 @@ _Task GrayScale
         for (;;)
         {
             yield(rand() % 20); // duerma un rato
-            BMP img = Buffer.remove();
-            if (img.getTamano() == -1) break;
-            GreyScale(img);
+            BMP img = BufferRI.remove();
+            if (img.getTamano() == -1)
+                break;
+            convertToGreyScale(img);
+            yield(rand() % 20); // duerma un rato
+            BufferGS.insert(img);
         }
     }
     /* Funcion encargada de pasar la imagen a escala de grises.
     Entrada: Estructura con la informacion de la imagen. */
-    void GreyScale(BMP image)
+    void convertToGreyScale(BMP image)
     {
         int R, G, B, grey, i, j;
         for (i = image.getAlto() - 1; i >= 0; i--)

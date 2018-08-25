@@ -22,6 +22,7 @@ private:
       yield(rand() % 20); // duerma un rato
       sprintf(filename, "imagen_%d.bmp", i);
       BMP img = this->LoadBMP(filename);
+      img.setId(i);
       Buffer.insert(img);
     }
   }

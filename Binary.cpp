@@ -6,11 +6,12 @@ using namespace std;
 #define BINARY_CPP
 _Task Binary
 {
+    int pixelesNegros;
     BoundedBuffer &BufferGS;
     BoundedBuffer &BufferB;
 
   public:
-    Binary(BoundedBuffer & bufGS, BoundedBuffer & bufB) : BufferGS(bufGS), BufferB(bufB) {}
+    Binary(BoundedBuffer & bufGS, BoundedBuffer & bufB) : pixelesNegros(0), BufferGS(bufGS), BufferB(bufB) {}
 
   private:
     void main()
@@ -22,6 +23,7 @@ _Task Binary
             if (img.getTamano() == -1)  break;
             convertToBinary(img, 60);
             yield(rand() % 20); // duerma un rato
+            img.setPixelesNegros(pixelesNegros);
             BufferB.insert(img);
             SaveBMP(img);
         }
@@ -48,11 +50,10 @@ _Task Binary
                     image.setPixelBE(i, j, 0);
                     image.setPixelGE(i, j, 0);
                     image.setPixelRE(i, j, 0);
-                    contador++;
+                    pixelesNegros++;
                 }
             }
         }
-        image.setPixelesNegros(contador);
     }
 
     void SaveBMP(BMP imagen)

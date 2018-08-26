@@ -7,6 +7,7 @@ class BMP
 {
   //char bm[2];
   int id;                     // para identificar la imagen
+  int nearlyBlack;            // para clasificacion
   vector<char> bm;            //(2 Bytes) BM (Tipo de archivo)
   int tamano;                 //(4 Bytes) Tamaño del archivo en bytes
   int reservado;              //(4 Bytes) Reservado
@@ -39,6 +40,14 @@ public:
   int getId()
   {
     return this->id;
+  }
+  void setNearlyBlack(int nearlyBlack)
+  {
+    this->nearlyBlack = nearlyBlack;
+  }
+  int getNearlyBlack()
+  {
+    return this->nearlyBlack;
   }
   void setBm(vector<char> bm)
   {

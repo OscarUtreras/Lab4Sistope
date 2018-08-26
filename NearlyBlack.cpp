@@ -20,8 +20,8 @@ _Task NearlyBlack
             yield(rand() % 20); // duerma un rato
             BMP img = BufferB.remove();
             if (img.getTamano() == -1)  break;
-            classifyNearlyBlack(img, 60);
             yield(rand() % 20); // duerma un rato
+            img.setNearlyBlack(classifyNearlyBlack(img, 60));
 		    cout << "Inserto con clasificacion en: " << img.getNearlyBlack() << endl;
             BufferNB.insert(img);
         }
@@ -30,18 +30,12 @@ _Task NearlyBlack
     Entrada: Estructura con la informacion de la imagen y umbral de clasificacion.
     Salida: 1 si es nearly black o 0 si no es nearly black. */
 
-    void classifyNearlyBlack(BMP image, int umbCla)
+    int classifyNearlyBlack(BMP image, int umbCla)
     {
-        cout << "=============================" << endl;
-        cout << "Alto: " << image.getAlto() << endl;
-        cout << "Ancho: " << image.getAncho() << endl;
-        cout << "P Negros: " << image.getPixelesNegros() << endl;
         float result = ((float)image.getPixelesNegros() / ((float)image.getAlto() * (float)image.getAncho())) * 100;
-		cout << "Resultado: " << result << endl;
-        cout << "=============================" << endl;
         if (result > umbCla)
-            return image.setNearlyBlack(1);
-        return image.setNearlyBlack(0);
+            return 1;
+        return 0;
     }
 };
 #endif

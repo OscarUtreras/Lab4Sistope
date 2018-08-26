@@ -6,6 +6,7 @@
 #include "GrayScale.cpp"
 #include "Binary.cpp"
 #include "NearlyBlack.cpp"
+#include "SaveBMP.cpp"
 
 void uMain::main()
 {
@@ -23,6 +24,7 @@ void uMain::main()
 	GrayScale *gs = new GrayScale(bufRI, bufGS);
 	Binary *b = new Binary(bufGS,bufB);
 	NearlyBlack *nb = new NearlyBlack(bufB,bufNB);
+	SaveBMP *si = new SaveBMP(bufNB);
 
 	delete ri;
 	bufRI.insert(*img);
@@ -31,6 +33,8 @@ void uMain::main()
 	delete b;
 	bufB.insert(*img);
 	delete nb;
+	bufNB.insert(*img);
+	delete si;
 	/*
 	for ( int i = 0; i < NoOfProds; i += 1 )
 		delete prods[i];

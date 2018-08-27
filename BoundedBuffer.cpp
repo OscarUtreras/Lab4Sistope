@@ -10,9 +10,10 @@ _Monitor BoundedBuffer
 	uCondition full, empty;
 	int front, back, count, buf_size;
 	queue<BMP> elements;
+	string name;
 
   public:
-	BoundedBuffer(int buf_size) : front(0), back(0), count(0), buf_size(buf_size) {}
+	BoundedBuffer(int buf_size, string name) : front(0), back(0), count(0), buf_size(buf_size),name(name) {}
 	_Nomutex int query() { return count; }
 	void insert(BMP elem)
 	{
@@ -21,7 +22,14 @@ _Monitor BoundedBuffer
 		elements.push(elem);
 		count += 1;
 		full.signal();
-		cout << "Inserto " << elem.getTamano() << endl;
+		if(elem.getName() != "-1")
+		{
+			cout << "+++++++++++++++++++++++++++++++++" << endl;
+			cout << "Se inserto un nuevo elemento" << endl;
+			cout << "Buffer: " << this->name << endl;
+			cout << "Cant. elementos: " << this->count <<endl;
+			cout << "+++++++++++++++++++++++++++++++++" << endl << endl;
+		}
 	}
 	BMP remove()
 	{
@@ -31,8 +39,23 @@ _Monitor BoundedBuffer
 		elements.pop();
 		count -= 1;
 		empty.signal();
-		cout << "Remove " << img.getTamano() << endl;
+		if(img.getName() != "-1")
+		{
+			cout << "---------------------------------" << endl;
+			cout << "Se quito un nuevo elemento" << endl;
+			cout << "Buffer: " << this->name << endl;
+			cout << "Cant. elementos: " << this->count <<endl;
+			cout << "---------------------------------" << endl << endl;
+		}
 		return img;
+	}
+	void setName(string name)
+	{
+		this->name = name;
+	}
+	string getName()
+	{
+		return this->name;
 	}
 };
 #endif

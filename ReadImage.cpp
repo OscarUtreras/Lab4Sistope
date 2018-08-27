@@ -15,13 +15,16 @@ private:
   void main()
   {
     const int n_images = 3;
-    cout << "n_images " << n_images << endl;
+    cout << "Cantidad de imagenes: " << n_images << endl;
     char *filename = (char *)malloc(sizeof(char) * 16);
     for (int i = 1; i <= n_images; i += 1)
     {
       yield(rand() % 20); // duerma un rato
       sprintf(filename, "imagen_%d.bmp", i);
       BMP img = this->LoadBMP(filename);
+      cout << "=================================" << endl;
+      cout << img.getName() << " leida." << endl;
+      cout << "=================================" << endl << endl;
       img.setId(i);
       Buffer.insert(img);
     }
@@ -47,6 +50,7 @@ private:
       printf("La imagen %s no se encontro\n", filename);
       exit(1);
     }
+    imagen.setName(string(filename));
     //Leer la cabecera de la imagen y almacenarla en la estructura global img
     fseek(archivo, 0, SEEK_SET);
     fread(&bm, sizeof(char), 2, archivo);

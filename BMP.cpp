@@ -1,11 +1,13 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 #ifndef BMP_CPP
 #define BMP_CPP
 class BMP
 {
   //char bm[2];
+  string name;
   int id;                     // para identificar la imagen
   int nearlyBlack;            // para clasificacion
   vector<char> bm;            //(2 Bytes) BM (Tipo de archivo)
@@ -32,6 +34,19 @@ public:
   BMP()
   {
     this->bm.resize(2);
+  }
+  BMP(int i)
+  {
+    this->tamano = i;
+    this->name = "-1";
+  }
+  void setName(string name)
+  {
+    this->name = name;
+  }
+  string getName()
+  {
+    return this->name;
   }
   void setId(int id)
   {

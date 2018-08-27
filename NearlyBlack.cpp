@@ -22,7 +22,7 @@ _Task NearlyBlack
             if (img.getTamano() == -1)  break;
             classifyNearlyBlack(img, 60);
             yield(rand() % 20); // duerma un rato
-		    cout << "Inserto con clasificacion en: " << img.getNearlyBlack() << endl;
+		        //cout << "Inserto con clasificacion en: " << img.getNearlyBlack() << endl;
             BufferNB.insert(img);
         }
     }
@@ -32,15 +32,22 @@ _Task NearlyBlack
 
     void classifyNearlyBlack(BMP image, int umbCla)
     {
-        cout << "=============================" << endl;
-        cout << "Alto: " << image.getAlto() << endl;
-        cout << "Ancho: " << image.getAncho() << endl;
-        cout << "P Negros: " << image.getPixelesNegros() << endl;
+        //cout << "=============================" << endl;
+        //cout << "Alto: " << image.getAlto() << endl;
+        //cout << "Ancho: " << image.getAncho() << endl;
+        //cout << "P Negros: " << image.getPixelesNegros() << endl;
         float result = ((float)image.getPixelesNegros() / ((float)image.getAlto() * (float)image.getAncho())) * 100;
-		cout << "Resultado: " << result << endl;
-        cout << "=============================" << endl;
+		    //cout << "Resultado: " << result << endl;
+        //cout << "=============================" << endl;
+        cout << "=================================" << endl;
         if (result > umbCla)
-            return image.setNearlyBlack(1);
+        {
+          cout << image.getName()<< " es nearly black."  << endl;
+          cout << "=================================" << endl << endl;
+          return image.setNearlyBlack(1);
+        }
+        cout <<image.getName()<< " no es nearly black." << endl;
+        cout << "=================================" << endl << endl;
         return image.setNearlyBlack(0);
     }
 };

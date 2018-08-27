@@ -22,6 +22,9 @@ _Task GrayScale
             if (img.getTamano() == -1)
                 break;
             convertToGreyScale(img);
+            cout << "=================================" << endl;
+            cout << img.getName() << " en escala de grises." <<endl;
+            cout << "=================================" << endl << endl;
             yield(rand() % 20); // duerma un rato
             BufferGS.insert(img);
         }

@@ -28,10 +28,6 @@ _Task Binary
             yield(rand() % 20); // duerma un rato
             img.setPixelesNegros(pixelesNegros);
             BufferB.insert(img);
-<<<<<<< HEAD
-            //SaveBMP(img);
-=======
->>>>>>> b747ff193e6c3916fe3c2d942362054a6a45fc16
         }
     }
 

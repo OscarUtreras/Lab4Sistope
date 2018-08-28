@@ -9,9 +9,10 @@ _Task Binary
     int pixelesNegros;
     BoundedBuffer &BufferGS;
     BoundedBuffer &BufferB;
+    int umbral;
 
   public:
-    Binary(BoundedBuffer & bufGS, BoundedBuffer & bufB) : pixelesNegros(0), BufferGS(bufGS), BufferB(bufB) {}
+    Binary(BoundedBuffer & bufGS, BoundedBuffer & bufB, int umbral) : pixelesNegros(0), BufferGS(bufGS), BufferB(bufB), umbral(umbral) {}
 
   private:
     void main()
@@ -21,7 +22,8 @@ _Task Binary
             yield(rand() % 20); // duerma un rato
             BMP img = BufferGS.remove();
             if (img.getTamano() == -1)  break;
-            convertToBinary(img, 60);
+            cout << "Umbral de binarizacion = " << umbral << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<< endl;
+            convertToBinary(img, umbral);
             cout << "=================================" << endl;
             cout << img.getName() << " binarizada." <<endl;
             cout << "=================================" << endl << endl;

@@ -8,9 +8,10 @@ _Task NearlyBlack
 {
     BoundedBuffer &BufferB;
     BoundedBuffer &BufferNB;
+    int umbral;
 
   public:
-    NearlyBlack(BoundedBuffer &bufB, BoundedBuffer &bufNB) : BufferB(bufB), BufferNB(bufNB) {}
+    NearlyBlack(BoundedBuffer & bufB, BoundedBuffer & bufNB, int umbral) : BufferB(bufB), BufferNB(bufNB), umbral(umbral) {}
 
   private:
     void main()
@@ -19,9 +20,11 @@ _Task NearlyBlack
         {
             yield(rand() % 20); // duerma un rato
             BMP img = BufferB.remove();
-            if (img.getTamano() == -1)  break;
+            if (img.getTamano() == -1)
+                break;
             yield(rand() % 20); // duerma un rato
-		        //cout << "Inserto con clasificacion en: " << img.getNearlyBlack() << endl;
+            cout << "Umbral de clasificacion = " << umbral << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<< endl;
+            img.setNearlyBlack(classifyNearlyBlack(img, umbral));
             BufferNB.insert(img);
         }
     }
@@ -29,25 +32,21 @@ _Task NearlyBlack
     Entrada: Estructura con la informacion de la imagen y umbral de clasificacion.
     Salida: 1 si es nearly black o 0 si no es nearly black. */
 
-    void classifyNearlyBlack(BMP image, int umbCla)
+    int classifyNearlyBlack(BMP image, int umbCla)
     {
-        //cout << "=============================" << endl;
-        //cout << "Alto: " << image.getAlto() << endl;
-        //cout << "Ancho: " << image.getAncho() << endl;
-        //cout << "P Negros: " << image.getPixelesNegros() << endl;
         float result = ((float)image.getPixelesNegros() / ((float)image.getAlto() * (float)image.getAncho())) * 100;
-		    //cout << "Resultado: " << result << endl;
-        //cout << "=============================" << endl;
         cout << "=================================" << endl;
         if (result > umbCla)
         {
-          cout << image.getName()<< " es nearly black."  << endl;
-          cout << "=================================" << endl << endl;
-          return image.setNearlyBlack(1);
+            cout << image.getName() << " es nearly black." << endl;
+            cout << "=================================" << endl
+                 << endl;
+            return 1;
         }
-        cout <<image.getName()<< " no es nearly black." << endl;
-        cout << "=================================" << endl << endl;
-        return image.setNearlyBlack(0);
+        cout << image.getName() << " no es nearly black." << endl;
+        cout << "=================================" << endl
+             << endl;
+        return 0;
     }
 };
 #endif

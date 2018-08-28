@@ -7,15 +7,15 @@ using namespace std;
 _Task ReadImage
 {
   BoundedBuffer &Buffer;
+  int n_images;
 
 public:
-  ReadImage(BoundedBuffer & buf) : Buffer(buf) {}
+  ReadImage(BoundedBuffer & buf, int n_images) : Buffer(buf), n_images(n_images) {}
 
 private:
   void main()
   {
-    const int n_images = 3;
-    cout << "Cantidad de imagenes: " << n_images << endl;
+    cout << "Cantidad de imagenes: " << n_images << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<< endl;
     char *filename = (char *)malloc(sizeof(char) * 16);
     for (int i = 1; i <= n_images; i += 1)
     {
@@ -24,7 +24,8 @@ private:
       BMP img = this->LoadBMP(filename);
       cout << "=================================" << endl;
       cout << img.getName() << " leida." << endl;
-      cout << "=================================" << endl << endl;
+      cout << "=================================" << endl
+           << endl;
       img.setId(i);
       Buffer.insert(img);
     }

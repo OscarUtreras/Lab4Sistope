@@ -79,8 +79,8 @@ void uMain::main()
 		if (test == 0)
 		{
 			BoundedBuffer bufRI(bufferSize, "Read Image / Gray Scale");   // Buffer para ReadImage
-			BoundedBuffer bufGS(bufferSize, "Gray Scale / Binary");		 // Buffer para GrayScale
-			BoundedBuffer bufB(bufferSize, "Binary / Nearly Black");		 // Buffer para Binary
+			BoundedBuffer bufGS(bufferSize, "Gray Scale / Binary");		  // Buffer para GrayScale
+			BoundedBuffer bufB(bufferSize, "Binary / Nearly Black");	  // Buffer para Binary
 			BoundedBuffer bufNB(bufferSize, "Nearly Black / Save Image"); // Buffer para NearlyBlack
 
 			//Imagen para parar
@@ -90,7 +90,7 @@ void uMain::main()
 			GrayScale *gs = new GrayScale(bufRI, bufGS);
 			Binary *b = new Binary(bufGS, bufB, umbBinary);
 			NearlyBlack *nb = new NearlyBlack(bufB, bufNB, umbClassi);
-			SaveImage *si = new SaveImage(bufNB,flag);
+			SaveImage *si = new SaveImage(bufNB, flag);
 
 			delete ri;
 			bufRI.insert(*img);
@@ -107,7 +107,6 @@ void uMain::main()
 			delete bufB;
 			delete bufNB;
 			*/
-
 		}
 		else
 			cout << "Ejecute nuevamente con los parametros correctos." << endl;

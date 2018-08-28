@@ -13,7 +13,7 @@ _Monitor BoundedBuffer
 	string name;
 
   public:
-	BoundedBuffer(int buf_size, string name) : front(0), back(0), count(0), buf_size(buf_size),name(name) {}
+	BoundedBuffer(int buf_size, string name) : front(0), back(0), count(0), buf_size(buf_size), name(name) {}
 	_Nomutex int query() { return count; }
 	void insert(BMP elem)
 	{
@@ -22,12 +22,12 @@ _Monitor BoundedBuffer
 		elements.push(elem);
 		count += 1;
 		full.signal();
-		if(elem.getName() != "-1")
+		if (elem.getName() != "-1")
 		{
 			cout << "+++++++++++++++++++++++++++++++++" << endl;
 			cout << "Se inserto un nuevo elemento" << endl;
 			cout << "Buffer: " << this->name << endl;
-			cout << "Cant. elementos: " << this->count <<endl;
+			cout << "Cant. elementos: " << this->count << endl;
 			cout << "+++++++++++++++++++++++++++++++++" << endl << endl;
 		}
 	}
@@ -39,13 +39,14 @@ _Monitor BoundedBuffer
 		elements.pop();
 		count -= 1;
 		empty.signal();
-		if(img.getName() != "-1")
+		if (img.getName() != "-1")
 		{
 			cout << "---------------------------------" << endl;
 			cout << "Se quito un nuevo elemento" << endl;
 			cout << "Buffer: " << this->name << endl;
-			cout << "Cant. elementos: " << this->count <<endl;
-			cout << "---------------------------------" << endl << endl;
+			cout << "Cant. elementos: " << this->count << endl;
+			cout << "---------------------------------" << endl
+				 << endl;
 		}
 		return img;
 	}

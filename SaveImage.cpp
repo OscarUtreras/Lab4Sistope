@@ -1,5 +1,6 @@
 #include "BoundedBuffer.cpp"
 #include "BMP.cpp"
+#include <utility> //pair
 #include <iostream>
 using namespace std;
 #ifndef SAVEIMAGE_CPP
@@ -7,10 +8,11 @@ using namespace std;
 _Task SaveImage
 {
   BoundedBuffer &Buffer;
+  int show;
 
 public:
-  SaveImage(BoundedBuffer & buf) : Buffer(buf) {}
-
+  SaveImage(BoundedBuffer & buf, int show) : Buffer(buf), show(show){}
+  vector<pair<string, int>> nbs;
 private:
   void main()
   {
@@ -19,12 +21,35 @@ private:
     {
       yield(rand() % 20); // duerma un rato
       BMP img = Buffer.remove();
-      if (img.getTamano() == -1)
-          break;
+      if(img.getTamano() != -1)
+      {
+        this->nbs.push_back(make_pair(img.getName(), img.getNearlyBlack()));
+      }
+      else if (img.getTamano() == -1)
+      {
+        if(this->show == 1)
+        {
+          showImage();
+        }
+        break;
+      }
       SaveBMP(img);
       cout << "=================================" << endl;
       cout << img.getName() << " guardada." << endl;
       cout << "=================================" << endl << endl;
+    }
+  }
+  void showImage()
+  {
+    cout << " -----------------------------" << endl;
+    cout << "|    image     | nearly black |" << endl;
+    cout << " -----------------------------" << endl;
+    for(int i=0; i < this->nbs.size(); i++)
+    {
+      if(this->nbs[i].second == 1)
+        cout << "| " << this->nbs[i].first << " |      yes     |" << endl;
+      else
+        cout << "| " << this->nbs[i].first << " |      no      |" << endl;
     }
   }
   void SaveBMP(BMP imagen)

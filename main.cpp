@@ -90,7 +90,7 @@ void uMain::main()
 			GrayScale *gs = new GrayScale(bufRI, bufGS);
 			Binary *b = new Binary(bufGS, bufB, umbBinary);
 			NearlyBlack *nb = new NearlyBlack(bufB, bufNB, umbClassi);
-			SaveImage *si = new SaveImage(bufNB);
+			SaveImage *si = new SaveImage(bufNB,flag);
 
 			delete ri;
 			bufRI.insert(*img);
@@ -101,6 +101,12 @@ void uMain::main()
 			delete nb;
 			bufNB.insert(*img);
 			delete si;
+			/*
+			delete bufRI;
+			delete bufGS;
+			delete bufB;
+			delete bufNB;
+			*/
 
 		}
 		else

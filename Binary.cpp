@@ -29,6 +29,8 @@ _Task Binary
             cout << img.getName() << " binarizada." << endl;
             cout << "=================================" << endl
                  << endl;
+            cout << "========probando=========================" << endl
+                 << endl;
             yield(rand() % 20); // duerma un rato
             img.setPixelesNegros(pixelesNegros);
             BufferB.insert(img);

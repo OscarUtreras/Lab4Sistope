@@ -23,14 +23,10 @@ _Task Binary
             BMP img = BufferGS.remove();
             if (img.getTamano() == -1)
                 break;
-            cout << "Umbral de binarizacion = " << umbral << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
             convertToBinary(img, umbral);
             cout << "=================================" << endl;
             cout << img.getName() << " binarizada." << endl;
-            cout << "=================================" << endl
-                 << endl;
-            cout << "========probando=========================" << endl
-                 << endl;
+            cout << "=================================" << endl << endl;
             yield(rand() % 20); // duerma un rato
             img.setPixelesNegros(pixelesNegros);
             BufferB.insert(img);

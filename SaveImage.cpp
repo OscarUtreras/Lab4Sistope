@@ -41,6 +41,9 @@ _Task SaveImage
                  << endl;
         }
     }
+    /*Procedimiento para mostrar el resultado del analisis.
+    Entrada: void.
+    Salida: void. */
     void showImage()
     {
         cout << " -----------------------------" << endl;
@@ -55,6 +58,9 @@ _Task SaveImage
         }
         cout << " -----------------------------" << endl;
     }
+    /*Procedimiento para guardar en disco una imagen BMP.
+    Entrada: Un objeto BMP con los datos de la imagen.
+    Saldia: void. */
     void SaveBMP(BMP imagen)
     {
         char *filename = (char *)malloc(sizeof(char) * 16);

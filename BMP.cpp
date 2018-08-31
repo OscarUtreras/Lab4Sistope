@@ -6,10 +6,9 @@ using namespace std;
 #define BMP_CPP
 class BMP
 {
-  //char bm[2];
-  string name;
-  int id;                     // para identificar la imagen
-  int nearlyBlack;            // para clasificacion
+  string name;                // Para identificar la imagen en consola
+  int id;                     // Para identificar la imagen codigo
+  int nearlyBlack;            // Para clasificacion
   vector<char> bm;            //(2 Bytes) BM (Tipo de archivo)
   int tamano;                 //(4 Bytes) Tamaño del archivo en bytes
   int reservado;              //(4 Bytes) Reservado
@@ -276,6 +275,9 @@ public:
   {
     return this->pixelV[i][j];
   }
+  /*Procedimiento para mostrar el contenido de la imagen BMP.
+  Entrada: void.
+  Salida: void. */
   void display()
   {
     cout << "BM= " << this->bm[0] << this->bm[1] << endl;

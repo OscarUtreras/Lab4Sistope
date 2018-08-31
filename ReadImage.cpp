@@ -15,7 +15,6 @@ public:
 private:
   void main()
   {
-    cout << "Cantidad de imagenes: " << n_images << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
     char *filename = (char *)malloc(sizeof(char) * 16);
     for (int i = 1; i <= n_images; i += 1)
     {

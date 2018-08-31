@@ -30,7 +30,8 @@ _Task GrayScale
         }
     }
     /* Funcion encargada de pasar la imagen a escala de grises.
-    Entrada: Estructura con la informacion de la imagen. */
+    Entrada: Estructura con la informacion de la imagen.
+    Salida: void. */
     void convertToGreyScale(BMP image)
     {
         int R, G, B, grey, i, j;

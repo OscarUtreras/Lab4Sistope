@@ -23,15 +23,15 @@ _Task GrayScale
                 break;
             convertToGreyScale(img);
             cout << "=================================" << endl;
-            cout << img.getName() << " en escala de grises." <<endl;
+            cout << img.getName() << " en escala de grises." << endl;
             cout << "=================================" << endl << endl;
             yield(rand() % 20); // duerma un rato
             BufferGS.insert(img);
         }
     }
-    /* Funcion encargada de pasar la imagen a escala de grises.
-    Entrada: Estructura con la informacion de la imagen.
-    Salida: void. */
+    /* Procedimiento encargado de pasar la imagen a escala de grises.
+    Entrada: Objeto con la informacion de la imagen.
+    Salida: Imagen en escala de grises (Se modifica el objeto con la informacion de la imagen). */
     void convertToGreyScale(BMP image)
     {
         int R, G, B, grey, i, j;

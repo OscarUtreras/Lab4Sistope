@@ -15,12 +15,10 @@ public:
 private:
   void main()
   {
-    char *filename = (char *)malloc(sizeof(char) * 16);
     for (int i = 1; i <= n_images; i += 1)
     {
       yield(rand() % 20); // duerma un rato
-      sprintf(filename, "imagen_%d.bmp", i);
-      BMP img = this->LoadBMP(filename);
+      BMP img = this->LoadBMP(i);
       cout << "=================================" << endl;
       cout << img.getName() << " leida." << endl;
       cout << "=================================" << endl
@@ -29,11 +27,14 @@ private:
       Buffer.insert(img);
     }
   }
-  /* Función encargada cargar la imagen BMP.
-    Entrada: nombre de la imagen.
+  /* Función encargada de cargar la imagen BMP.
+    Entrada: id de la imagen.
     Salida: imagen cargada en un objeto BMP */
-  BMP LoadBMP(char *filename)
+  BMP LoadBMP(int image_id)
   {
+    char *filename = (char *)malloc(sizeof(char) * 16);
+    char *filename2 = (char *)malloc(sizeof(char) * 16);
+    sprintf(filename, "imagen_%d.bmp", image_id);
     BMP imagen;
     FILE *archivo; //Puntero FILE para el archivo de imágen a abrir
     int i, j, k, resto, aux_int;
@@ -46,11 +47,21 @@ private:
     archivo = fopen(filename, "rb+");
     if (!archivo)
     {
+      sprintf(filename2, "image_%d.bmp", image_id);
+      printf("La imagen %s no se encontro... Probando con %s\n", filename, filename2);
+      filename = NULL;
       //Si la imágen no se encuentra en la ruta dada
-      printf("La imagen %s no se encontro\n", filename);
-      exit(1);
+      archivo = fopen(filename2, "rb+");
+      if (!archivo)
+      {
+        printf("La imagen %s no se encontro\n", filename2);
+        exit(1);
+      }
     }
-    imagen.setName(string(filename));
+    if(filename!=NULL)
+      imagen.setName(string(filename));
+    else
+      imagen.setName(string(filename2));
     //Leer la cabecera de la imagen y almacenarla en la estructura global img
     fseek(archivo, 0, SEEK_SET);
     fread(&bm, sizeof(char), 2, archivo);

@@ -60,7 +60,7 @@ _Task SaveImage
     }
     /*Procedimiento para guardar en disco una imagen BMP.
     Entrada: Un objeto BMP con los datos de la imagen.
-    Saldia: void. */
+    Salida: void. */
     void SaveBMP(BMP imagen)
     {
         char *filename = (char *)malloc(sizeof(char) * 16);

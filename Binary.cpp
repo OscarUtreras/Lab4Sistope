@@ -33,9 +33,9 @@ _Task Binary
         }
     }
 
-    /* Funcion encargada de binarizar la imagen.
-    Entrada: Estructura con la informacion de la imagen y umbral de binarizacion.
-    Salida: imagen binarizada (arreglo con los pixeles de la imagen). */
+    /* Procedimiento encargado de binarizar la imagen.
+    Entrada: Objeto con la informacion de la imagen y umbral de binarizacion.
+    Salida: imagen binarizada (Se modifica el objeto con la informacion de la imagen). */
     void convertToBinary(BMP image, int umbBinary)
     {
         pixelesNegros = 0;

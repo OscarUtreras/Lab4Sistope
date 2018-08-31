@@ -16,6 +16,7 @@ _Monitor BoundedBuffer
 	BoundedBuffer(int buf_size, string name) : front(0), back(0), count(0), buf_size(buf_size), name(name) {}
 	_Nomutex int query() { return count; }
 	/*Procedimiento que agrega una imagen a la cola del buffer.
+	Entrada: Objeto con la informacion de la imagen.
 	Salida: void. */
 	void insert(BMP elem)
 	{
@@ -32,9 +33,9 @@ _Monitor BoundedBuffer
 			cout << "Se inserto un nuevo elemento" << endl;
 			cout << "Buffer: " << this->name << endl;
 			cout << "Cant. elementos: " << this->count << endl;
-			while(!aux.empty())
+			while (!aux.empty())
 			{
-				cout << i << ") " << aux.front().getName()  << "." << endl;
+				cout << i << ") " << aux.front().getName() << "." << endl;
 				aux.pop();
 				i++;
 			}

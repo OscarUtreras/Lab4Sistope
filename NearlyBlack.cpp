@@ -30,7 +30,6 @@ _Task NearlyBlack
     /* Funcion encargada clasificar la imagen binarizada.
     Entrada: Estructura con la informacion de la imagen y umbral de clasificacion.
     Salida: 1 si es nearly black o 0 si no es nearly black. */
-
     int classifyNearlyBlack(BMP image, int umbCla)
     {
         float result = ((float)image.getPixelesNegros() / ((float)image.getAlto() * (float)image.getAncho())) * 100;
